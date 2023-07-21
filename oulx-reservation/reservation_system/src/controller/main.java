@@ -1,10 +1,16 @@
 package controller;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
+
 public class main {
+	
+	static EntityManager em = Persistence.createEntityManagerFactory("reservation_system").createEntityManager();
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		System.out.println("works");
+		
+		
 	}
 
 }
