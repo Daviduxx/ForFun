@@ -1,0 +1,13 @@
+@import '../scss/partials/variables';
+@import '../scss/partials/mixins';
+
+#container{
+  @include flex;
+  #phone{
+    border: 1px solid red;
+  }
+}
+
+h1{
+  color: $blue;
+}
