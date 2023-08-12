@@ -1,0 +1,16 @@
+@import '../../../scss/partials/variables';
+@import '../../../scss/partials/mixins';
+
+
+    #img{
+      @include flex(row, center);
+      img{
+        width: 50%;
+      }
+    }
+    #title{
+      @include text(3.4rem, 800)
+    }
+    #button{
+      @include button;
+    }
