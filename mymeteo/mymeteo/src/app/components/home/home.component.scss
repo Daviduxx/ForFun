@@ -1,7 +1,11 @@
 @import '../../../scss/partials/variables';
 @import '../../../scss/partials/mixins';
 
-
+  #container{
+    @include flex(column, space-around);
+    height: 700px;
+    width: 350px;
+  }
     #img{
       @include flex(row, center);
       img{
