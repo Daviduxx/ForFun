@@ -1,0 +1,13 @@
+
+#buttonsContainer{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    gap: $m;
+    #textDisplay{
+        grid-column: 1 / 5;
+    }
+    .button {
+      margin: 0 auto;
+      color: $red;
+     }
+}

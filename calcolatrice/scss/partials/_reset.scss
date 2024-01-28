@@ -1,0 +1,16 @@
+@import 'variables';
+
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: inherit;
+    color: $orange;
+}
+
+button{
+    width: $l;
+    height: $l;
+    border-radius: $border-100;
+    background-color: $red;
+}
