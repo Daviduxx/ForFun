@@ -2,12 +2,22 @@
 #buttonsContainer{
     display: grid;
     grid-template-columns: auto auto auto auto;
+    grid-template-rows: 100px auto auto auto auto auto;
     gap: $m;
     #textDisplay{
         grid-column: 1 / 5;
     }
     .button {
-      margin: 0 auto;
-      color: $red;
+      button{
+        width: 100%;
+        height: 100%;
+      }
+     }
+     #delete, #zero{
+        grid-column: 1 / 3;
+     }
+     #equal{
+        grid-row: 5 / 7;
+        grid-column: 4;
      }
 }

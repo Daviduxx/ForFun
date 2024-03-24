@@ -6,11 +6,20 @@
     border: 0;
     font-size: inherit;
     color: $orange;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    background-color: $blue;
 }
 
 button{
-    width: $l;
-    height: $l;
-    border-radius: $border-100;
+    border-radius: 20px;
     background-color: $red;
+    padding: $m;
 }

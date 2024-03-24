@@ -1,13 +1,16 @@
 #container{
-    max-width: 450px;
-    padding: 15px;
+    padding: 20px;
     background-color: $black;
-    margin: 20px;
+    border-radius: 20px;
     #textDisplay{
         background-color: $yellow;
-        padding: 5px;
+        padding: 8px;
         margin: 10px 0;
         text-align: right;
+        border-radius: 5px;
+        color: $black;
+        height: 80px;
+        font-size: 30px;
     }
 
 }
