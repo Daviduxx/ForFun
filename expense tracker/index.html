@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Expense Tracker</title>
+</head>
+<body>
+
+    <h1>Expense Tracker</h1>
+    <h2>Segna le tue spese</h2>
+
+    <div class="content">
+       <div id="input">
+        <form action="">
+            <label for="nome">Cosa:</label>
+            <input type="text" placeholder="Che cosa hai comprato?" id="nome"><br>
+            <label for="data">Data:</label>
+            <input type="date" id="data"><br>
+            <label for="spesa">Spesa:</label>
+            <input type="number" id="spesa" placeholder="Quanto hai speso?" required><br>
+            <button onclick="aggiungiSpesa()">AGGIUNGI</button>
+        </form>
+       </div>
+       <div id="output">
+        <table border="1" width="100%" id="table">
+            <tr>
+                <th>Cosa</th>
+                <th>Data</th>
+                <th>Spesa</th>
+                <th>DEL</th>
+            </tr>
+        </table>
+        <h3>Totale spese: <span id="totale">0</span><span>€</span></h3>
+       </div>
+    </div>
+    
+    <script>
+        
+        function aggiungiSpesa() {
+
+        // Evita che si ricarichi la pagina al clic
+        event.preventDefault();
+
+        let tabella = document.getElementById('table');
+        let nome = document.getElementById('nome').value;
+        let data = document.getElementById('data').value;
+        let spesa = document.getElementById('spesa').value;
+        
+        // Visualizzare i dati
+        console.log(nome);
+        console.log(data);
+        // console.log(spesa);
+        
+        // Crea le stringhe che andranno nei td
+        let textNodeNome = document.createTextNode(nome);
+        let textNodeData = document.createTextNode(data);
+        let textNodeSpesa = document.createTextNode(spesa);
+        let textNodeDel = document.createTextNode('X');
+        
+        // Crea la singola riga su cui andreanno tutti i dati
+        let row = document.createElement('tr');
+
+        // Crea il tag td in cui andreanno le stringhe
+        let cellNome = document.createElement('td');
+        let cellData = document.createElement('td');
+        let cellSpesa = document.createElement('td');
+        let cellDel = document.createElement('td');
+        
+         // Appendiamo le stringhe ai tag td   
+        cellNome.appendChild(textNodeNome);
+        cellData.appendChild(textNodeData);
+        cellSpesa.appendChild(textNodeSpesa);
+        cellDel.appendChild(textNodeDel);
+        
+        // Appendiamo i tag td al tag tr
+        row.appendChild(cellNome);
+        row.appendChild(cellData);
+        row.appendChild(cellSpesa);
+        row.appendChild(cellDel);
+        
+        // Appendimo il tag tr alla tabella
+        tabella.appendChild(row);
+        
+        cellDel.addEventListener('click', del);
+
+        cellSpesa.setAttribute('class', 'soldi');
+        
+        // Fa un html collection di tutti gli elementi con classe 'soldi'
+        let soldi = document.getElementsByClassName('soldi');
+        
+        // Cicla su soldi
+        let totaleSpese = 0;
+        for (let i = 0; i < soldi.length; i++) {
+            let valore = parseFloat(soldi[i].innerHTML);
+            totaleSpese += valore;
+        }
+        document.getElementById('totale').innerHTML = totaleSpese;
+        }
+
+        function del(e) {
+            // Elimina la riga contenente l'elemento cliccato
+            let parent = e.target.parentElement;
+            parent.remove();
+            // Sottrae dal totale la spesa eliminata
+            let target = e.target;
+            let sibling = target.previousElementSibling.innerHTML;
+            document.getElementById('totale').innerHTML -= sibling;
+        }
+    </script>
+</body>
+</html>
