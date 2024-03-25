@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Note Taker</title>
+</head>
+<body>
+    <h1>Note Taker</h1>
+    <h2>Scrivi qualcosa</h2>
+
+    <div id="main">
+        <div id="input">
+            <form action="">
+                <label for="note">Your note:</label><br>
+                <textarea name="note-field" id="note" cols="80" rows="5" placeholder="Type something..."></textarea><br>
+                <button onclick="addNote()" id="submit">ADD NOTE</button>
+            </form>
+        </div>
+        <div id="output">
+            <div id="nothing">There's nothing here at the moment...</div>
+            </div>
+    </div>
+
+    <script>
+
+
+        function addNote() {
+
+            event.preventDefault();
+            
+            let myNote = document.getElementById('note').value;
+            let myOutput = document.getElementById('output');
+
+            let divmyNote = document.createElement('div');
+            let textmyNote = document.createTextNode(myNote);
+
+            divmyNote.setAttribute('class', 'note-item');
+            divmyNote.appendChild(textmyNote);
+
+            myOutput.appendChild(divmyNote);
+
+            document.getElementById('nothing').innerHTML = '';
+
+            let moreText = document.createElement('button');
+            let textMoreText = document.createTextNode('View More');
+            moreText.appendChild(textMoreText);
+            divmyNote.appendChild(moreText);
+            moreText.setAttribute('class', 'more');
+            moreText.addEventListener('click', viewMore);
+        }
+
+        function viewMore(){
+            console.log('ciao');
+            this.parentElement.style.height = '100%';
+            this.style.display = 'none';
+
+            let lessText = document.createElement('button');
+            let textLessText = document.createTextNode('Hide');
+            lessText.appendChild(textLessText);
+            this.parentElement.appendChild(lessText);
+            lessText.setAttribute('class', 'more');
+            lessText.addEventListener('click', hide);
+
+        }
+
+        function hide(){
+            this.parentElement.style.height = '200px';
+            this.style.display = 'none';
+            this.previousSibling.style.display = 'block';
+        }
+
+        
+        // function viewMore() {
+        //     let noteArray = document.getElementsByClassName('note-item');
+        //     let moreText = event.target;
+        //     for (let i = 0; i < noteArray.length; i++) {
+        //         noteArray[i].addEventListener('click', function(e) {
+        //             this.setAttribute('class', 'note-item active');
+                    
+        //             let lessText = document.createElement('button');
+        //             textLessText = document.createTextNode('Hide');
+        //             lessText.appendChild(textLessText);
+        //             lessText.setAttribute('class', 'right');
+        //             let divmyNote = e.target.parentElement;
+        //             moreText.setAttribute('class', 'more');
+        //             divmyNote.appendChild(lessText);
+        //             lessText.setAttribute('onclick', 'viewLess()');
+        //         })
+        //     }   
+        // }
+
+        function viewLess() {
+            let noteArray = document.getElementsByClassName('note-item');
+            for (let i = 0; i < noteArray.length; i++) {
+                noteArray[i].addEventListener('click', function(e) {
+                    let lessText = e.target;
+                    this.setAttribute('class', 'note-item');
+                    console.log(lessText)  
+                })
+            }
+        }
+    </script>
+</body>
+</html>
