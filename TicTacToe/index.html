@@ -4,11 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
     <title>Tic Tac Toe</title>
   </head>
   <body>
     <h1>TIC TAC TOE</h1>
-    <h2 class="hide">It's <span id="player"></span>turn now</h2>
+    <h2 class="hide">It's <span id="player">X </span>turn now</h2>
     <div id="mainContainer">
       <div id="container">
         <div class="tile"></div>
@@ -22,9 +26,16 @@
         <div class="tile"></div>
       </div>
     </div>
-    <div>
-      <button id="play">PLAY NOW</button>
+    <h3>Time: <span id="chronometer">00:00</span></h3>
+
+    <div id="buttonContainer">
+      <button id="play" class="play">
+        <i class="bi bi-play-fill"></i>PLAY NOW
+      </button>
+      <button class="play hide"><i class="bi bi-stop-fill"></i>STOP</button>
+      <button class="play hide"><i class="bi bi-pause-fill"></i>PAUSE</button>
     </div>
+
     <script src="script.js"></script>
   </body>
 </html>
